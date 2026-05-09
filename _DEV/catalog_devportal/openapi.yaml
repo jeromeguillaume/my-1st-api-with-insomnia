@@ -9,11 +9,26 @@ info:
   title: My 1st API
   description: This is my first API, it is a simple API to test the OpenAPI specification (OAS insomnia 12.5)
   version: 1.0.0
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+security:
+  - basicAuth: []
+  - ApiKeyAuth: []
 paths:
   /uuid:
     get:
       description: Generate and get an UUID
       operationId: get_uuid
+      security:
+        - ApiKeyAuth: []
+        - basicAuth: []
       responses:
         "200":
           description: A UUID4.
@@ -130,15 +145,3 @@ tags:
   - name: Delayed Response
   - name: Path
   - name: Status Codes
-components:
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: apikey
-security:
-  - basicAuth: []
-  - ApiKeyAuth: []
