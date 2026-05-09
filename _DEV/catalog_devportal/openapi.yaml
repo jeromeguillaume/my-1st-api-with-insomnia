@@ -139,3 +139,6 @@ components:
       type: apiKey
       in: header
       name: apikey
+security:
+  - basicAuth: []
+  - ApiKeyAuth: []
