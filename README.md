@@ -1,5 +1,5 @@
 # Template to build and deploy an API in Insomnia and Konnect
-The Insomnia template API is located in `my-1st-api/insomnia`
+The Insomnia template API is located in `my-1st-api/openapi-insomnia.yaml`
 
 When the Developer commits this repo, a pipeline is executed to publish the API in Konnect - Development environment for Kong Gateway, Catalog and Developer Portal
 
