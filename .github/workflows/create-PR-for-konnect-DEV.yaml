@@ -35,7 +35,7 @@ jobs:
         with:
           inso-version: 12.5.0
       
-      - name: Lint
+      - name: Linting
         run: |
           inso lint spec spc_87251b
   
@@ -44,6 +44,8 @@ jobs:
     environment: FRANCE_DEV
     #runs-on: ubuntu-latest
     runs-on: self-hosted
+    needs: 
+      - linting
     env:
       DECK_KONNECT_REDIS_ID: ${{ vars.KONNECT_REDIS_ID }}
       DECK_KONNECT_REDIS_NAME: ${{ vars.KONNECT_REDIS_NAME }}
