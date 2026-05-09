@@ -1,0 +1,11 @@
+_format_version: "3.0"
+
+partials:
+  - name: ${{ env "DECK_KONNECT_REDIS_NAME" }}
+    type: redis-ee
+    id: ${{ env "DECK_KONNECT_REDIS_ID" }}
+    tags:
+      - konnect-managed
+      - ${{ env "DECK_KONNECT_REDIS_ID" }}
+      - ${{ env "DECK_KONNECT_REDIS_NAME" }}
+      - managed_cache.v0
