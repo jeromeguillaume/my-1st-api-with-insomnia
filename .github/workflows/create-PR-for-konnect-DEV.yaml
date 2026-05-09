@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   
-  linting:
+  lint:
     name: Lint OpenAPI Specification
     environment: FRANCE_DEV
     #runs-on: ubuntu-latest
@@ -28,24 +28,39 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      - name: Setup inso CLI
+        if: runner.environment != 'self-hosted'
+        uses: kong/setup-inso@v2
+        with:
+          inso-version: 12.5.0      
+      - name: Lint
+        run: |
+          inso lint spec spc_87251b
+  
+  test:
+    name: Test API
+    #runs-on: ubuntu-latest
+    runs-on: self-hosted
+    needs: lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Setup inso CLI
         if: runner.environment != 'self-hosted'
         uses: kong/setup-inso@v2
         with:
           inso-version: 12.5.0
-      
-      - name: Linting
-        run: |
-          inso lint spec spc_87251b
-  
+      - name: test
+        run: inso run collection wrk_ae9cae --env env_d7ff239fbe
+
   create-pr:
     name: Create Pull Request for konnect
     environment: FRANCE_DEV
     #runs-on: ubuntu-latest
     runs-on: self-hosted
     needs: 
-      - linting
+      - lint
+      - test
     env:
       DECK_KONNECT_REDIS_ID: ${{ vars.KONNECT_REDIS_ID }}
       DECK_KONNECT_REDIS_NAME: ${{ vars.KONNECT_REDIS_NAME }}
