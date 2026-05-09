@@ -31,7 +31,7 @@ spec:
         name: Kong HQ
       title: My 1st API
       description: This is my first API, it is a simple API to test the OpenAPI
-        specification (OAS)
+        specification (-OAS-)
       version: 1.0.0
     paths:
       /uuid:
@@ -166,4 +166,4 @@ spec:
   meta:
     id: spc_87251b5574c74d0990ccff2eff24f085
     created: 1778328554989
-    modified: 1778328689642
+    modified: 1778328814571
