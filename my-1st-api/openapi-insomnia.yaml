@@ -138,8 +138,8 @@ collection:
     meta:
       id: fld_ecb2a82bb2584fb7b27b4a52333fd447
       created: 1778334022700
-      modified: 1778334185703
-      sortKey: -1778334022700
+      modified: 1778334968164
+      sortKey: -1778334022801
       description: ""
     children:
       - url: "{{ _.base_url }}/anything"
@@ -217,7 +217,7 @@ collection:
         meta:
           id: req_d1c13567f1a54de297e1571ea8468904
           created: 1778334022702
-          modified: 1778334129120
+          modified: 1778334971245
           isPrivate: false
           description: returns all your request
           sortKey: -1778334022702
@@ -247,6 +247,15 @@ collection:
                 insomnia.expect(insomnia.response.code).to.eql(200);
             });
 
+
+            insomnia.test('Include', () => {
+
+            const jsonBody = insomnia.response.json();
+            insomnia.expect(jsonBody.json.client).to.eql("my client");
+
+
+            });
+
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -259,7 +268,7 @@ collection:
     meta:
       id: fld_87da2ee457774cf0851259e9f0f76d80
       created: 1778334022701
-      modified: 1778334185591
+      modified: 1778334786001
       sortKey: -1778334022701
       description: ""
     children:
@@ -301,13 +310,13 @@ cookieJar:
   meta:
     id: jar_2d3ea89ed4ff51e68322c2c8402b1084347c4e74
     created: 1778328512823
-    modified: 1778334204290
+    modified: 1778334962176
 environments:
   name: Base Environment
   meta:
     id: env_2d3ea89ed4ff51e68322c2c8402b1084347c4e74
     created: 1778328512822
-    modified: 1778334204290
+    modified: 1778334962177
     isPrivate: false
   data:
     base_url: "{{ _.scheme }}://{{ _.host }}{{ _.base_path }}"
@@ -316,7 +325,7 @@ environments:
       meta:
         id: env_d7ff239fbe784e46bbd019876f06bf97
         created: 1778334022699
-        modified: 1778334204290
+        modified: 1778334962177
         isPrivate: false
         sortKey: 1778334022699
       data:
@@ -473,4 +482,4 @@ spec:
   meta:
     id: spc_87251b5574c74d0990ccff2eff24f085
     created: 1778328554989
-    modified: 1778334588376
+    modified: 1778334754592
