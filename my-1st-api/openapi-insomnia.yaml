@@ -4,7 +4,7 @@ name: My 1st API
 meta:
   id: wrk_ae9cae86cebb469fab59703ac2c0ff10
   created: 1778328512819
-  modified: 1778328512819
+  modified: 1778332186647
   description: ""
 cookieJar:
   name: Default Jar
@@ -31,7 +31,7 @@ spec:
         name: Kong HQ
       title: My 1st API
       description: This is my first API, it is a simple API to test the OpenAPI
-        specification (OAS inso)
+        specification (OAS insomnia 12.5)
       version: 1.0.0
     paths:
       /uuid:
@@ -163,11 +163,7 @@ spec:
           type: apiKey
           in: header
           name: apikey
-    security:
-      - basicAuth: []
-      - ApiKeyAuth: []
-
   meta:
     id: spc_87251b5574c74d0990ccff2eff24f085
     created: 1778328554989
-    modified: 1778328814571
+    modified: 1778332306212
