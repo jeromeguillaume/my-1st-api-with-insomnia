@@ -1,5 +1,5 @@
-# Template to build and deploy an API in Konnect
-The template of the OAS (OpenAPI Specification) is located in `my-1st-api/openapi.yaml`
+# Template to build and deploy an API in Insomnia and Konnect
+The Insomnia template API is located in `my-1st-api/insomnia`
 
 When the Developer commits this repo, a pipeline is executed to publish the API in Konnect - Development environment for Kong Gateway, Catalog and Developer Portal
 
