@@ -1,0 +1,181 @@
+_format_version: "3.0"
+consumer_groups:
+- name: gold
+  tags:
+  - platform-repo-managed
+- name: silver
+  tags:
+  - platform-repo-managed
+- name: bronze
+  tags:
+  - platform-repo-managed
+consumers:
+- groups:
+  - name: gold
+  keyauth_credentials:
+  - key: gold
+    tags:
+    - platform-repo-managed
+  tags:
+  - platform-repo-managed
+  username: gold-1
+- groups:
+  - name: silver
+  keyauth_credentials:
+  - key: silver
+    tags:
+    - platform-repo-managed
+  tags:
+  - platform-repo-managed
+  username: silver-1
+- groups:
+  - name: bronze
+  keyauth_credentials:
+  - key: bronze
+    tags:
+    - platform-repo-managed
+  tags:
+  - platform-repo-managed
+  username: bronze-1
+partials:
+- id: ${{ env "DECK_KONNECT_REDIS_ID" }}
+  name: ${{ env "DECK_KONNECT_REDIS_NAME" }}
+  tags:
+  - konnect-managed
+  - ${{ env "DECK_KONNECT_REDIS_ID" }}
+  - ${{ env "DECK_KONNECT_REDIS_NAME" }}
+  - managed_cache.v0
+  type: redis-ee
+services:
+- host: httpbin.konghq.com
+  id: ca2db6c4-b46e-5df6-9d11-6a19699b169b
+  name: my-1st-api
+  path: /
+  plugins:
+  - config:
+      add:
+        headers:
+        - X-Engie-Security:passed
+    name: response-transformer
+    tags:
+    - platform-repo-managed
+  - config:
+      key_names:
+      - apikey
+    name: key-auth
+    tags:
+    - platform-repo-managed
+  - config:
+      error_code: 429
+      error_message: API rate limit exceeded
+      limit:
+      - 10
+      - 1000
+      - 10000
+      namespace: ${{ env "DECK_KONNECT_REDIS_ID" }}-my-1st-api
+      strategy: redis
+      sync_rate: 0
+      window_size:
+      - 60
+      - 3600
+      - 86400
+      window_type: fixed
+    enabled: true
+    name: rate-limiting-advanced
+    partials:
+    - id: ${{ env "DECK_KONNECT_REDIS_ID" }}
+      name: ${{ env "DECK_KONNECT_REDIS_NAME" }}
+      path: config.redis
+    tags:
+    - platform-repo-managed
+  port: 443
+  protocol: https
+  routes:
+  - id: 78dedd78-c275-5867-a73b-6a146146947f
+    methods:
+    - GET
+    name: my-1st-api_anything-get
+    paths:
+    - ~/anything$
+    plugins: []
+    protocols:
+    - https
+    regex_priority: 200
+    strip_path: false
+    tags:
+    - my-1st-api
+    - platform-repo-managed
+  - id: 12ff581c-6e9f-57da-8808-99df0abde5c2
+    methods:
+    - POST
+    name: my-1st-api_anything-post
+    paths:
+    - ~/anything$
+    plugins: []
+    protocols:
+    - https
+    regex_priority: 200
+    strip_path: false
+    tags:
+    - my-1st-api
+    - platform-repo-managed
+  - id: 2de908d4-b1d6-5dad-b313-25cc0e6feb80
+    methods:
+    - GET
+    name: my-1st-api_query
+    paths:
+    - ~/anything/query$
+    plugins: []
+    protocols:
+    - https
+    regex_priority: 200
+    strip_path: false
+    tags:
+    - my-1st-api
+    - platform-repo-managed
+  - id: 40c8c4d7-4409-5d0f-ade6-08f2a56376d4
+    methods:
+    - GET
+    name: my-1st-api_delay
+    paths:
+    - ~/delay/(?<delay_value>[^#?/]+)$
+    plugins: []
+    protocols:
+    - https
+    regex_priority: 100
+    strip_path: false
+    tags:
+    - my-1st-api
+    - platform-repo-managed
+  - id: 512f6918-4f02-5783-adc3-e6b8cd3fd9d7
+    methods:
+    - GET
+    name: my-1st-api_status-code
+    paths:
+    - ~/status/(?<codes>[^#?/]+)$
+    plugins: []
+    protocols:
+    - https
+    regex_priority: 100
+    strip_path: false
+    tags:
+    - my-1st-api
+    - platform-repo-managed
+  - id: 8a0b026f-e31c-5d5d-869d-c0e5f52caf78
+    methods:
+    - GET
+    name: my-1st-api_get-uuid
+    paths:
+    - ~/uuid$
+    plugins: []
+    protocols:
+    - https
+    regex_priority: 200
+    strip_path: false
+    tags:
+    - my-1st-api
+    - platform-repo-managed
+  tags:
+  - my-1st-api
+  - platform-repo-managed
+upstreams: []
