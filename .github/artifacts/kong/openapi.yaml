@@ -8,7 +8,7 @@ info:
     name: Kong HQ
   title: My 1st API
   description: This is my first API, it is a simple API to test the OpenAPI
-    specification (OAS insomnia -12.5-)
+    specification (OAS insomnia -12.5- )
   version: 1.0.0
 components:
   securitySchemes:
@@ -19,6 +19,8 @@ components:
       type: apiKey
       in: header
       name: apikey
+security:
+ - ApiKeyAuth: []
 paths:
   /uuid:
     get:
