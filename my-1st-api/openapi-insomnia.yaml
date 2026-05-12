@@ -11,7 +11,7 @@ collection:
     meta:
       id: fld_839461aecfb64727b7c68ec977f093e2
       created: 1778334022699
-      modified: 1778496245691
+      modified: 1778598488964
       sortKey: -1778334022699
       description: Creates a random UUID and returns it in a JSON structure
     children:
@@ -52,7 +52,7 @@ collection:
     meta:
       id: fld_164f912dea6a42bcbabd58dd7684a4bb
       created: 1778334022700
-      modified: 1778496245658
+      modified: 1778598488931
       sortKey: -1778334022700
       description: ""
     children:
@@ -93,7 +93,7 @@ collection:
     meta:
       id: fld_3a2fdeef8e9249648871f1d53db1f5a8
       created: 1778334022700
-      modified: 1778496245610
+      modified: 1778598488885
       sortKey: -1778334022700
       description: ""
     children:
@@ -138,7 +138,7 @@ collection:
     meta:
       id: fld_ecb2a82bb2584fb7b27b4a52333fd447
       created: 1778334022700
-      modified: 1778496245543
+      modified: 1778598488820
       sortKey: -1778334022801
       description: ""
     children:
@@ -217,7 +217,7 @@ collection:
         meta:
           id: req_d1c13567f1a54de297e1571ea8468904
           created: 1778334022702
-          modified: 1778334971245
+          modified: 1778598521195
           isPrivate: false
           description: returns all your request
           sortKey: -1778334022702
@@ -268,7 +268,7 @@ collection:
     meta:
       id: fld_87da2ee457774cf0851259e9f0f76d80
       created: 1778334022701
-      modified: 1778496245577
+      modified: 1778598488850
       sortKey: -1778334022701
       description: ""
     children:
@@ -310,13 +310,13 @@ cookieJar:
   meta:
     id: jar_2d3ea89ed4ff51e68322c2c8402b1084347c4e74
     created: 1778328512823
-    modified: 1778496245690
+    modified: 1778598488962
 environments:
   name: Base Environment
   meta:
     id: env_2d3ea89ed4ff51e68322c2c8402b1084347c4e74
     created: 1778328512822
-    modified: 1778496245691
+    modified: 1778598488963
     isPrivate: false
   data:
     base_url: "{{ _.scheme }}://{{ _.host }}{{ _.base_path }}"
@@ -325,7 +325,7 @@ environments:
       meta:
         id: env_d7ff239fbe784e46bbd019876f06bf97
         created: 1778334022699
-        modified: 1778496245691
+        modified: 1778598488963
         isPrivate: false
         sortKey: 1778334022699
       data:
@@ -389,9 +389,6 @@ spec:
           type: apiKey
           in: header
           name: apikey
-    security:
-      - basicAuth: []
-      - ApiKeyAuth: []
     paths:
       /uuid:
         get:
