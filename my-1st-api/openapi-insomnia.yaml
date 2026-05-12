@@ -389,6 +389,8 @@ spec:
           type: apiKey
           in: header
           name: apikey
+    security:
+      - ApiKeyAuth: []
     paths:
       /uuid:
         get:
